@@ -1,16 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
+
 import { StyleSheet, Text, View } from 'react-native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import Estoque from './screens/Estoque';
 import Login from './screens/Login';
+import FaleConosco from './screens/FaleConosco';
+
+const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <View style={styles.container}>
-      <Login/>
+    <NavigationContainer>  
+      <Stack.Navigator screenOptions={{headerShown : false}} initialRouteName="Login">
+        <Stack.Screen name="Estoque" component={Estoque}/>
+        <Stack.Screen name="Login" component={Login}/>
+      </Stack.Navigator>
+    </NavigationContainer>
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
